@@ -9,6 +9,7 @@ output <- args[3]
 idlist <- scan(idlist, what="character")
 
 idinfo <- ieugwasr::gwasinfo(idlist) %>%
-	mutate(file=file.path(gwasdir, id, paste0(id, ".vcf.gz")))
+    mutate(file=file.path(gwasdir, id, paste0(id, ".vcf.gz")))
 
 save(idinfo, file=output)
+
