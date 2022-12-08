@@ -1,3 +1,4 @@
 archive
 job_reports/
 logs/
+.snakemake/
