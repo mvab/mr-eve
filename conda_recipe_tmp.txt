@@ -1,0 +1,5 @@
+conda create -n mreve_snakemake
+conda activate mreve_snakemake
+conda install -c conda-forge -c bioconda snakemake
+conda install -c conda-forge r-base=4.1 # must use this version (required by some R packages)
+conda install  -c conda-forge libxml2 cmake r-xml  r-gmp # needed by some r packages
