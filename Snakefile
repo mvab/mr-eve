@@ -31,6 +31,18 @@ CHUNKS = list(range(1,2))
 nCHUNKS = len(CHUNKS)
 
 
+
+rule all:
+    input:
+    expand('{OUTDIR}/resources/flag_extract_master', OUTDIR=OUTDIR),
+        expand('{OUTDIR}/resources/flag_mr', OUTDIR=OUTDIR),
+        expand('{OUTDIR}/resources/flag_heterogeneity', OUTDIR=OUTDIR),
+        expand('{OUTDIR}/resources/flag_neo4j_mr', OUTDIR=OUTDIR),
+        expand('{OUTDIR}/resources/flag_collect_neo4j_mr', OUTDIR=OUTDIR),
+        expand('{OUTDIR}/resources/neo4j_stage/variants.csv.gz', OUTDIR=OUTDIR),
+        expand('data/{id}/ml.csv.gz', OUTDIR=OUTDIR, id=ID_test)
+
+
 rule install_r_packages: 
     output:
         expand('{OUTDIR}/r_packages_installed.csv', OUTDIR=OUTDIR)
@@ -100,7 +112,7 @@ rule download_rfobj: # YES
 #        expand('{INSTRUMENTLIST}', INSTRUMENTLIST=INSTRUMENTLIST),
 #        expand('{LDREFPATH}.sqlite', LDREFPATH=LDREFPATH)
 #    output:
-#        '{OUTDIR}/data/{id}/ml.csv.gz'
+#        'data/{id}/ml.csv.gz' # later add {OUTDIR}
 #    shell:
 #        """
 #  mkdir -p {OUTDIR}/data/{wildcards.id}
