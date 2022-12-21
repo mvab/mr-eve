@@ -1,5 +1,5 @@
 list.of.packages<-c("remotes", "BiocManager",
-		    "dplyr", "argparse", "parallel", "randomForest", 
+		    "dplyr", "argparse", "parallel", "randomForest", "purrr", "jsonlite",
                     'BiocParallel', "GenomicRanges", "biomaRt", "myvariant",
                     "ieugwasr", "genetics.binaRies", "gwasvcf", "TwoSampleMR")
 missing.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
@@ -16,6 +16,8 @@ if ("dplyr" %in% missing.packages){install.packages("dplyr", repos = cran_mirror
 if ("argparse" %in% missing.packages){install.packages("argparse", repos = cran_mirror)}
 if ("parallel" %in% missing.packages){install.packages("parallel", repos = cran_mirror)}
 if ("randomForest" %in% missing.packages){install.packages("randomForest", repos = cran_mirror)}
+if ("purrr" %in% missing.packages){install.packages("purrr", repos = cran_mirror)}
+if ("jsonlite" %in% missing.packages){install.packages("jsonlite", repos = cran_mirror)}
 
 # bioconductor packagaes
 if ("BiocParallel" %in% missing.packages){BiocManager::install("BiocParallel") }# make sure this gets installed - does not work with R 4.2
@@ -24,7 +26,7 @@ if ("biomaRt" %in% missing.packages){BiocManager::install("biomaRt")}
 if ("myvariant" %in% missing.packages){BiocManager::install("myvariant")}
 
 # github packages
-if ("ieugwasr" %in% missing.packages){remotes::install_github("mrcieu/ieugwasr")}
+if ("ieugwasr" %in% missing.packages){remotes::install_github("mrcieu/ieugwasr")} # maybe not needed?
 if ("genetics.binaRies" %in% missing.packages){remotes::install_github("MRCIEU/genetics.binaRies")}
 if ("gwasvcf" %in% missing.packages){remotes::install_github("mrcieu/gwasvcf", upgrade=F) }# don't try to update dependencies
 if ("TwoSampleMR" %in% missing.packages){remotes::install_github("MRCIEU/TwoSampleMR")}
